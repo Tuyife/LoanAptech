@@ -1,19 +1,32 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
+
 import About from './components/About';
+import Privacy from './components/Privacy';
 import Footer from './components/Footer';
-import privacy from './components/Privacy';
-import PrivacyPolicy from './components/Privacy';
+import Contact from './components/Contact';
+import Terms from './components/Terms';
+import Faq from './components/Faq';
+
 function App() {
   return (
-    <div className="App">
-      <About />
-      <PrivacyPolicy/>
-      <Footer/>
-    
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/faq" element={<Faq />} />
+        </Routes>
+
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
-
 
 export default App;
