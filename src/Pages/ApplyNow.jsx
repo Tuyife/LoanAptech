@@ -54,4 +54,5 @@ function ApplyNow() {
     } catch (error) {
         console.error('Error submitting application:', error);
         alert('An error occurred while submitting your application. Please try again later.');
-    }               
+    }   
+};            
