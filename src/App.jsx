@@ -8,16 +8,17 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 import Terms from './components/Terms';
 import Faq from './components/Faq';
-import Home from './Pages/Home';
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Signup from './Pages/Signup';
+import Signup from './pages/Signup';
+import Login from './pages/Login' ;
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
-        
+      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -26,6 +27,7 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
 
 

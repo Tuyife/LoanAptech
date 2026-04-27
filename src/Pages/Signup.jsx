@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import './Signup.css';
+import { useNavigate, Link } from "react-router-dom";
+import "./SignUp.css";
 
-const Signup = () => {
+const SignUp = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -12,37 +12,37 @@ const Signup = () => {
         confirmPassword: ''
     });
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) => {   
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+    const handleChange = (e) => {
+        setFormData({ ...formData,
+             [e.target.name]: e.target.value        
+            });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        
-if (!formData.name || !formData.email || !formData.phone || !formData.password || !formData.confirmPassword) {  
-            setError('Please fill in all fields');
+
+        if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+            setError('Please fill in all fields.');
             return;
         }
 
         if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
+            setError('Passwords do not match.');
             return;
         }
-
+        
         if (formData.password.length < 6) {
-            setError('Password must be at least 6 characters long');
+            setError('Password must be at least 6 characters long.');
             return;
         }
 
-        setSuccess('Registration successful! Redirecting to login...');
+        setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/signup', {
+            const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,28 +55,24 @@ if (!formData.name || !formData.email || !formData.phone || !formData.password |
                     password: formData.password
                 })
             });
-
             const data = await response.json();
-
             if (response.ok) {
-                setSuccess('Registration successful! Redirecting to login...');
-                setTimeout(() => {
-                    navigate('/login');
-                }, 3000);
+                navigate('/login');
             } else {
-                setError(data.message || 'Registration failed');
+                setError(data.message || 'Account Created Successfully.');
             }
-        } catch (error) {
-            setError('An error occurred during registration');
+        } catch (err) {
+            setError('Failed to create account. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="auth-container">
-            <h2>Sign Up</h2>
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">{success}</p>}
+            <h2>Create your Account</h2> 
             <form onSubmit={handleSubmit}>
+            {error && <div className="error-message">{error}</div>}
                 <input
                     type="text"
                     name="name"
@@ -91,8 +87,8 @@ if (!formData.name || !formData.email || !formData.phone || !formData.password |
                     value={formData.email}
                     onChange={handleChange}
                 />
-                <input
-                    type="tel"
+                    <input
+                    type="text"
                     name="phone"
                     placeholder="Phone"
                     value={formData.phone}
@@ -112,10 +108,16 @@ if (!formData.name || !formData.email || !formData.phone || !formData.password |
                     value={formData.confirmPassword}
                     onChange={handleChange}
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Signing Up...' : 'Sign Up'}
+                </button>
             </form>
+            {error && <p className="error">{error}</p>}
+            <p>
+                Already have an account? <Link to="/login">Login here</Link>
+            </p>
         </div>
     );
 };
 
-export default Signup;      
+export default SignUp;
