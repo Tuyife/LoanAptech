@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import "./SignUp.css";
+import "./Signup.css";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -59,10 +59,10 @@ const SignUp = () => {
             if (response.ok) {
                 navigate('/login');
             } else {
-                setError(data.message || 'Account Created Successfully.');
+                setError(data.message || 'Registration failed. Please try again.');
             }
         } catch (err) {
-            setError('Failed to create account. Please try again.');
+            setError('Registration error: ' + err.message);
         } finally {
             setLoading(false);
         }

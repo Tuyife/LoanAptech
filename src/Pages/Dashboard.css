@@ -1,0 +1,218 @@
+/* Dashboard.css */
+
+/* Page Layout */
+.dashboard-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header Section */
+.dashboard-container h1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 0;
+    padding: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Subtitle Section */
+.dashboard-subtitle {
+    background: #f8f9fa;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-subtitle p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Content Section */
+.dashboard-content {
+    padding: 2rem;
+    background: white;
+}
+
+.dashboard-content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.dashboard-content p:first-of-type {
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.dashboard-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Hover Effects */
+.dashboard-container:hover {
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Responsive Design */
+
+/* Tablet Screens */
+@media (max-width: 768px) {
+    .dashboard-page {
+        padding: 1rem;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.8rem;
+        padding: 1.5rem;
+    }
+
+    .dashboard-subtitle {
+        padding: 1rem 1.5rem;
+    }
+
+    .dashboard-subtitle p {
+        font-size: 1rem;
+    }
+
+    .dashboard-content {
+        padding: 1.5rem;
+    }
+
+    .dashboard-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+    .dashboard-page {
+        padding: 0.5rem;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+
+    .dashboard-subtitle {
+        padding: 0.75rem 1rem;
+    }
+
+    .dashboard-subtitle p {
+        font-size: 0.9rem;
+    }
+
+    .dashboard-content {
+        padding: 1rem;
+    }
+
+    .dashboard-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Optional: Add some decorative elements */
+.dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dashboard-container:hover::before {
+    opacity: 1;
+}
+
+/* Loading state (if needed later) */
+.dashboard-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Error state (if needed later) */
+.dashboard-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    color: #dc3545;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dashboard-error-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Scrollbar styling (optional) */
+.dashboard-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dashboard-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
