@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
+    
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -47,3 +48,5 @@
   },
   "homepage": "https://github.com/Tuyife/LoanAptech#readme"
 }
+
+
